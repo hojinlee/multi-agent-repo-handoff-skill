@@ -1,0 +1,7 @@
+{
+  "name": "multi-agent-repo-handoff",
+  "version": "0.1.0",
+  "displayName": "Multi-Agent Repo Handoff",
+  "description": "Set up GitHub-based handoff workflows across Codex, Claude Code, and other coding agents.",
+  "skills": ["multi-agent-repo-handoff"]
+}

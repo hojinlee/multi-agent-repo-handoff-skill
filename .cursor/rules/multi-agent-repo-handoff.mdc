@@ -1,4 +1,9 @@
-# Claude Code Instructions
+---
+description: Multi-agent GitHub handoff rules
+alwaysApply: true
+---
+
+# Multi-Agent Repo Handoff Rules
 
 This repository may be worked on by multiple coding agents. GitHub and repository documents are the source of truth; chat history and local uncommitted changes are not.
 
@@ -47,7 +52,3 @@ scripts/end_session.sh
 - Do not run network/data download/live/production commands unless secrets are configured and the user explicitly expects it.
 - Update `WORKLOG.md` and `TODO.md` after meaningful work.
 - If validation fails, record the exact command and failure before handoff.
-
-## Claude Code Default
-
-Recommended worker branch: `claude-code-wip`.

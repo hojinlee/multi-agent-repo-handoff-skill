@@ -1,4 +1,4 @@
-# Claude Code Instructions
+# GitHub Copilot Instructions
 
 This repository may be worked on by multiple coding agents. GitHub and repository documents are the source of truth; chat history and local uncommitted changes are not.
 
@@ -48,6 +48,4 @@ scripts/end_session.sh
 - Update `WORKLOG.md` and `TODO.md` after meaningful work.
 - If validation fails, record the exact command and failure before handoff.
 
-## Claude Code Default
-
-Recommended worker branch: `claude-code-wip`.
+Use these rules when GitHub Copilot or Copilot CLI works in this repository.

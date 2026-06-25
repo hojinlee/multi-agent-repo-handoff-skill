@@ -1,4 +1,4 @@
 interface:
   display_name: "Multi-Agent Repo Handoff"
-  short_description: "Set up GitHub-based handoff for multiple coding agents."
-  default_prompt: "Set up or update this repo so multiple coding agents can work safely across WIP branches with documented handoff, validation scripts, and GitHub templates."
+  short_description: "Set up GitHub handoff across Codex, Claude Code, and other agents."
+  default_prompt: "Set up or update this repo so multiple coding agents can work safely across WIP branches with documented handoff, validation scripts, GitHub templates, and agent-specific entrypoints."

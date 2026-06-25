@@ -1,11 +1,11 @@
 ---
 name: multi-agent-repo-handoff
-description: Set up or update a GitHub-based operating model for repositories shared by multiple coding agents such as Codex, Claude Code, local workers, cloud workers, or temporary review agents. Use when the user wants seamless handoff across machines or agents, WIP branch conventions, agent onboarding docs, CLAUDE.md/AGENTS.md guidance, commit/push end-of-session workflows, GitHub PR/Issue templates, CI checks, or safe worker branch automation.
+description: Set up or update a multi-agent GitHub handoff toolkit for repositories shared by Codex, Claude Code, GitHub Copilot, Cursor, Windsurf, Cline, OpenCode, local workers, cloud workers, or temporary review agents. Use when the user wants seamless handoff across machines or agents, WIP branch conventions, agent onboarding docs, CLAUDE.md/AGENTS.md guidance, commit/push end-of-session workflows, GitHub PR/Issue templates, CI checks, or safe worker branch automation.
 ---
 
 # Multi-Agent Repo Handoff
 
-Use this skill to make a repository safe for multiple coding agents to share through GitHub without relying on chat history or local uncommitted state.
+Use this skill to make a repository safe for multiple coding agents to share through GitHub without relying on chat history or local uncommitted state. It can scaffold Codex skills, Claude Code instructions, and instruction-only entrypoints for other agent tools.
 
 ## Core Workflow
 
@@ -21,6 +21,20 @@ Use this skill to make a repository safe for multiple coding agents to share thr
 7. Update existing agent entrypoints instead of replacing project-specific instructions.
 8. Validate with the repo test command and the generated handoff scripts.
 9. Commit and push on the appropriate WIP branch when cross-agent continuity is required.
+
+## Multi-Agent Distribution Targets
+
+When publishing or adapting this package, keep these entrypoints aligned:
+
+- `multi-agent-repo-handoff/SKILL.md` for Codex skill usage.
+- `AGENTS.md` for Codex and generic agent project instructions.
+- `CLAUDE.md` for Claude Code.
+- `.github/copilot-instructions.md` for GitHub Copilot.
+- `.cursor/rules/*.mdc` for Cursor.
+- `.windsurf/rules/*.md` for Windsurf.
+- `.clinerules` for Cline.
+- `.opencode/AGENTS.md` for OpenCode.
+- `.agents/rules/*.md` for generic agent-rule consumers.
 
 ## Files To Prefer
 

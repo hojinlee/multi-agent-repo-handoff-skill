@@ -1,0 +1,6 @@
+{
+  "name": "multi-agent-repo-handoff",
+  "version": "0.1.0",
+  "displayName": "Multi-Agent Repo Handoff",
+  "description": "Instruction pack for GitHub-based handoff workflows across multiple coding agents."
+}
