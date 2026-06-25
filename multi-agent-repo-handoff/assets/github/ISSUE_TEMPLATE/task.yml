@@ -1,0 +1,49 @@
+name: Task
+description: Track a focused unit of work that any worker can continue.
+title: "[Task] "
+labels:
+  - task
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What should be true when this task is complete?
+      placeholder: Describe the desired end state.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: Keep this narrow enough for one branch and one PR.
+      placeholder: Files, modules, commands, and behavior in scope.
+    validations:
+      required: true
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: Out Of Scope
+      description: Explicitly list work this task must not expand into.
+      placeholder: Production rollout, secrets, generated artifacts.
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: Concrete checks another worker can use before closing the task.
+      placeholder: Tests pass; docs updated; handoff notes recorded.
+    validations:
+      required: true
+  - type: textarea
+    id: handoff
+    attributes:
+      label: Handoff Context
+      description: Current branch, last command, known blockers, and next safe step.
+      placeholder: Branch worker-name-wip; last command passed; next update docs.
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety
+      options:
+        - label: This task does not require committing `.env`, secrets, raw data, generated reports, or large generated artifacts.
+          required: true
