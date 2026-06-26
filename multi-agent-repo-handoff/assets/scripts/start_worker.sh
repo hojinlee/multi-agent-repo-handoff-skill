@@ -73,5 +73,9 @@ else
   scripts/handoff_check.sh
 fi
 
+if [ -x scripts/worker_status.sh ]; then
+  scripts/worker_status.sh
+fi
+
 echo "Worker branch ready: $worker_branch"
-echo "Next: do focused work, then run scripts/end_session.sh --commit -m "message" --push"
+echo "Next: read docs/WORKERS.md, do focused work, then run scripts/end_session.sh --commit -m \"message\" --push"

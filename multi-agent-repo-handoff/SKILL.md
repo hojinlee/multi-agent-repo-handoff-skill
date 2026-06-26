@@ -46,10 +46,12 @@ For a generic repo, create or update these files:
 - `TODO.md`: task queue and completion state.
 - `docs/OPERATING_MODEL.md`: branch, commit, push, PR, CI, and safety rules.
 - `docs/HANDOFF.md`: start/end session commands.
+- `docs/WORKERS.md`: worker status board with branch, task, issue/PR, and next safe step.
 - `docs/WORKER_ONBOARDING.md`: instructions for new workers.
 - `docs/CODEX_CONTINUITY.md`: copy-paste prompt for Codex-like workers.
 - `scripts/handoff_check.sh`: safe local state inspection.
 - `scripts/start_worker.sh`: switch/create worker branch.
+- `scripts/worker_status.sh`: show worker board and branch ahead/behind state.
 - `scripts/end_session.sh`: test/check/optional commit/push session closure.
 - `.github/PULL_REQUEST_TEMPLATE.md`, `.github/ISSUE_TEMPLATE/task.yml`, `.github/workflows/ci.yml`.
 
@@ -76,6 +78,7 @@ Do not overwrite repo-specific architecture, data, security, or test instruction
 After edits, run the repo's test command and:
 
 ```bash
+scripts/worker_status.sh
 scripts/handoff_check.sh --run-tests
 scripts/end_session.sh
 ```

@@ -12,16 +12,19 @@ First read:
 1. AGENTS.md
 2. WORKLOG.md
 3. TODO.md
-4. docs/OPERATING_MODEL.md
-5. docs/HANDOFF.md
-6. docs/WORKER_ONBOARDING.md
-7. Project-specific architecture/data/test docs
+4. docs/WORKERS.md
+5. docs/OPERATING_MODEL.md
+6. docs/HANDOFF.md
+7. docs/WORKER_ONBOARDING.md
+8. Project-specific architecture/data/test docs
 
 Start:
 - git status --short --branch
 - git pull --ff-only
+- scripts/worker_status.sh --fetch
 - scripts/start_worker.sh --branch [worker-wip branch]
 
 End:
+- update docs/WORKERS.md, WORKLOG.md, and TODO.md
 - scripts/end_session.sh --commit -m "message" --push
 ```

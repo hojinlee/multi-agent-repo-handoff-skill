@@ -9,6 +9,7 @@ Start:
 ```bash
 git status --short --branch
 git pull --ff-only
+scripts/worker_status.sh --fetch
 scripts/start_worker.sh --branch <worker-name>-wip
 ```
 
@@ -26,10 +27,11 @@ Generic worker reading order:
 2. Worker-specific entrypoint such as `CLAUDE.md`
 3. `WORKLOG.md`
 4. `TODO.md`
-5. `docs/OPERATING_MODEL.md`
-6. `docs/HANDOFF.md`
-7. `docs/WORKER_ONBOARDING.md`
-8. Project-specific architecture/data/test docs
+5. `docs/WORKERS.md`
+6. `docs/OPERATING_MODEL.md`
+7. `docs/HANDOFF.md`
+8. `docs/WORKER_ONBOARDING.md`
+9. Project-specific architecture/data/test docs
 
 ## Worker Prompt Template
 
@@ -47,20 +49,23 @@ First read:
 2. [worker entrypoint, e.g. CLAUDE.md]
 3. WORKLOG.md
 4. TODO.md
-5. docs/OPERATING_MODEL.md
-6. docs/HANDOFF.md
-7. docs/WORKER_ONBOARDING.md
-8. project-specific architecture/data/test docs
+5. docs/WORKERS.md
+6. docs/OPERATING_MODEL.md
+7. docs/HANDOFF.md
+8. docs/WORKER_ONBOARDING.md
+9. project-specific architecture/data/test docs
 
 Start:
 - git status --short --branch
 - git pull --ff-only
+- scripts/worker_status.sh --fetch
 - scripts/start_worker.sh --branch [worker-wip branch]
 
 Rules:
 - Do not work directly on main.
 - Do not commit secrets, raw data, generated reports, or large generated artifacts.
-- Update WORKLOG.md and TODO.md after meaningful work.
+- Check `docs/WORKERS.md` before changing files owned by another active worker.
+- Update WORKLOG.md, TODO.md, and docs/WORKERS.md after meaningful work.
 - End with scripts/end_session.sh --commit -m "message" --push.
 
 Current goal:

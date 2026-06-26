@@ -31,7 +31,14 @@ echo "== Multi-agent handoff check =="
 echo "Repo: $repo_root"
 
 missing_required_file=false
-for required_path in   AGENTS.md   WORKLOG.md   TODO.md   docs/HANDOFF.md   docs/OPERATING_MODEL.md   docs/WORKER_ONBOARDING.md
+for required_path in \
+  AGENTS.md \
+  WORKLOG.md \
+  TODO.md \
+  docs/HANDOFF.md \
+  docs/WORKERS.md \
+  docs/OPERATING_MODEL.md \
+  docs/WORKER_ONBOARDING.md
 do
   if [ -f "$required_path" ]; then
     echo "OK required file: $required_path"
@@ -85,7 +92,7 @@ if [ -n "$tracked_sensitive" ]; then
 fi
 
 if [ "$run_tests" = true ]; then
-  if [ -f pyproject.toml ] || [ -d tests ]; then
+  if [ -d tests ]; then
     echo "Running default Python tests..."
     PYTHONPATH=src python3 -m unittest discover -s tests
   else

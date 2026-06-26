@@ -7,14 +7,15 @@ The goal is simple: a new worker should be able to continue from GitHub and repo
 ## What It Adds
 
 - A stable branch model: `main` plus `<worker-name>-wip` branches.
-- Worker onboarding docs for Codex, Claude Code, and temporary workers.
+- Worker onboarding docs and a worker status board for Codex, Claude Code, and temporary workers.
 - Safe session scripts:
   - `scripts/handoff_check.sh`
   - `scripts/start_worker.sh`
+  - `scripts/worker_status.sh`
   - `scripts/end_session.sh`
 - GitHub PR and issue templates.
 - GitHub Actions CI template.
-- Starter docs for operating model, handoff, and worker onboarding.
+- Starter docs for operating model, handoff, worker board, and worker onboarding.
 - Agent-specific entrypoints for several coding tools.
 
 ## Supported Entrypoints
