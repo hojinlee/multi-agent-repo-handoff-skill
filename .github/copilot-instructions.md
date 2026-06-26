@@ -26,8 +26,6 @@ Before changing code, read:
 
 ```bash
 git status --short --branch
-git pull --ff-only
-scripts/worker_status.sh --fetch
 scripts/start_worker.sh --branch <worker-name>-wip
 ```
 
@@ -47,7 +45,7 @@ scripts/end_session.sh
 
 - Do not commit `.env`, API keys, account numbers, tokens, private certificates, raw data, generated reports, or large generated artifacts.
 - Do not run network/data download/live/production commands unless secrets are configured and the user explicitly expects it.
-- Update `WORKLOG.md`, `TODO.md`, and `docs/WORKERS.md` after meaningful work.
+- `scripts/start_worker.sh` fetches remotes and fast-forwards the worker branch by default. Update `WORKLOG.md`, `TODO.md`, and `docs/WORKERS.md` after meaningful work.
 - If validation fails, record the exact command and failure before handoff.
 
 Use these rules when GitHub Copilot or Copilot CLI works in this repository.

@@ -27,9 +27,7 @@ This repository can be worked on by multiple coding workers. The goal is to make
 
 ```bash
 git status --short --branch
-git pull --ff-only
-scripts/worker_status.sh --fetch
-scripts/handoff_check.sh
+scripts/start_worker.sh --branch <worker-branch>
 ```
 
 ## End
@@ -39,7 +37,7 @@ scripts/end_session.sh
 scripts/end_session.sh --commit -m "Describe completed work" --push
 ```
 
-Before publishing, update `docs/WORKERS.md`, `WORKLOG.md`, and `TODO.md` so another worker can continue without chat history.
+`start_worker.sh` fetches remotes and fast-forwards the worker branch by default. Before publishing, update `docs/WORKERS.md`, `WORKLOG.md`, and `TODO.md` so another worker can continue without chat history.
 
 ## Safety
 

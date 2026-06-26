@@ -10,7 +10,7 @@ This file is the human-readable work board. Use `scripts/worker_status.sh` to co
 
 | Worker | Branch | Status | Current Task | Issue/PR | Last Published | Next Safe Step |
 | --- | --- | --- | --- | --- | --- | --- |
-| primary worker | `<primary-worker>-wip` | active | Current assigned work | - | - | Run `scripts/worker_status.sh --fetch`, then continue. |
+| primary worker | `<primary-worker>-wip` | active | Current assigned work | - | - | Run `scripts/start_worker.sh --branch <worker-branch>`, then continue. |
 | secondary worker | `<secondary-worker>-wip` | idle | No assigned work | - | - | Assign work before creating or changing branch. |
 | Claude Code | `claude-code-wip` | not-created | No assigned work | - | - | Create only when Claude Code is assigned work. |
 | review worker | `review-worker-wip` | not-created | No assigned work | - | - | Create only for review-only or audit work. |
@@ -26,8 +26,6 @@ This file is the human-readable work board. Use `scripts/worker_status.sh` to co
 ## Start-Of-Session Check
 
 ```bash
-git pull --ff-only
-scripts/worker_status.sh --fetch
 scripts/start_worker.sh --branch <worker-branch>
 ```
 

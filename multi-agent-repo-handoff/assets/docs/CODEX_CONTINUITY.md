@@ -20,9 +20,9 @@ First read:
 
 Start:
 - git status --short --branch
-- git pull --ff-only
-- scripts/worker_status.sh --fetch
 - scripts/start_worker.sh --branch [worker-wip branch]
+
+`start_worker.sh` fetches remotes and fast-forwards the worker branch by default.
 
 End:
 - update docs/WORKERS.md, WORKLOG.md, and TODO.md

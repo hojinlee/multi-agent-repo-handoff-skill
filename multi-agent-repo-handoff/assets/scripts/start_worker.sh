@@ -4,13 +4,16 @@ set -eu
 worker_branch=""
 base_ref="HEAD"
 run_tests=false
+sync_remote=true
 
 usage() {
   cat <<'USAGE'
-Usage: scripts/start_worker.sh --branch <worker-branch> [--base <ref>] [--run-tests]
+Usage: scripts/start_worker.sh --branch <worker-branch> [--base <ref>] [--run-tests] [--no-fetch]
 
 Switches to an existing worker branch or creates it from the selected base.
-The script does not fetch from the network. Run git pull/fetch explicitly first.
+By default, the script fetches all remotes and fast-forwards the worker branch
+from its upstream before running handoff checks. Use --no-fetch only when
+network access is unavailable or intentionally disabled.
 USAGE
 }
 
@@ -28,6 +31,10 @@ while [ "$#" -gt 0 ]; do
       ;;
     --run-tests)
       run_tests=true
+      shift
+      ;;
+    --no-fetch|--offline)
+      sync_remote=false
       shift
       ;;
     --help|-h)
@@ -57,6 +64,11 @@ if [ -n "$status_output" ] && [ "$current_branch" != "$worker_branch" ]; then
   exit 1
 fi
 
+if [ "$sync_remote" = true ]; then
+  echo "Fetching latest remote state..."
+  git fetch --all --prune
+fi
+
 if [ "$current_branch" = "$worker_branch" ]; then
   echo "Already on worker branch: $worker_branch"
 elif git show-ref --verify --quiet "refs/heads/$worker_branch"; then
@@ -65,6 +77,21 @@ elif git show-ref --verify --quiet "refs/remotes/origin/$worker_branch"; then
   git switch --track "origin/$worker_branch"
 else
   git switch -c "$worker_branch" "$base_ref"
+fi
+
+if [ "$sync_remote" = true ]; then
+  upstream=$(git rev-parse --abbrev-ref --symbolic-full-name '@{u}' 2>/dev/null || true)
+  if [ -z "$upstream" ] && git show-ref --verify --quiet "refs/remotes/origin/$worker_branch"; then
+    git branch --set-upstream-to="origin/$worker_branch" "$worker_branch"
+    upstream="origin/$worker_branch"
+  fi
+
+  if [ -n "$upstream" ]; then
+    echo "Fast-forwarding $worker_branch from $upstream..."
+    git merge --ff-only "$upstream"
+  else
+    echo "WARN no upstream configured for $worker_branch; fetched remotes but cannot auto fast-forward"
+  fi
 fi
 
 if [ "$run_tests" = true ]; then
@@ -78,4 +105,4 @@ if [ -x scripts/worker_status.sh ]; then
 fi
 
 echo "Worker branch ready: $worker_branch"
-echo "Next: read docs/WORKERS.md, do focused work, then run scripts/end_session.sh --commit -m \"message\" --push"
+echo "Next: read docs/WORKERS.md, do focused work, then run scripts/end_session.sh --commit -m "message" --push"

@@ -57,6 +57,10 @@ For a generic repo, create or update these files:
 
 Do not overwrite repo-specific architecture, data, security, or test instructions. Merge this operating model into existing docs.
 
+## Auto-Sync Rule
+
+`scripts/start_worker.sh --branch <worker-branch>` fetches remotes and fast-forwards the worker branch by default. Use `--no-fetch` only for intentional offline work.
+
 ## Safety Rules
 
 - Do not commit `.env`, API keys, account numbers, tokens, private certificates, raw data, generated reports, or large generated artifacts.
@@ -78,8 +82,7 @@ Do not overwrite repo-specific architecture, data, security, or test instruction
 After edits, run the repo's test command and:
 
 ```bash
-scripts/worker_status.sh
-scripts/handoff_check.sh --run-tests
+scripts/start_worker.sh --branch <worker-branch> --run-tests
 scripts/end_session.sh
 ```
 

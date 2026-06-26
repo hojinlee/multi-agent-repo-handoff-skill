@@ -8,7 +8,7 @@ The goal is simple: a new worker should be able to continue from GitHub and repo
 
 - A stable branch model: `main` plus `<worker-name>-wip` branches.
 - Worker onboarding docs and a worker status board for Codex, Claude Code, and temporary workers.
-- Safe session scripts:
+- Safe session scripts; `scripts/start_worker.sh` fetches remotes and fast-forwards the worker branch by default:
   - `scripts/handoff_check.sh`
   - `scripts/start_worker.sh`
   - `scripts/worker_status.sh`

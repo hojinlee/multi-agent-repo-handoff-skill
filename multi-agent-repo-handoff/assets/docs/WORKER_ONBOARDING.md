@@ -11,8 +11,6 @@
 
 ```bash
 git status --short --branch
-git pull --ff-only
-scripts/worker_status.sh --fetch
 scripts/start_worker.sh --branch <worker-name>-wip
 ```
 
@@ -40,13 +38,12 @@ First read:
 
 Start:
 - git status --short --branch
-- git pull --ff-only
-- scripts/worker_status.sh --fetch
 - scripts/start_worker.sh --branch [worker-wip branch]
 
 Rules:
 - Do not work directly on main.
 - Do not commit secrets, raw data, generated reports, or large generated artifacts.
+- `start_worker.sh` fetches remotes and fast-forwards the worker branch by default.
 - Check `docs/WORKERS.md` before changing files owned by another active worker.
 - Update WORKLOG.md, TODO.md, and docs/WORKERS.md after meaningful work.
 - End with scripts/end_session.sh --commit -m "message" --push.
